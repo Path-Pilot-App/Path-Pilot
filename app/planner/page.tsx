@@ -13,6 +13,14 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
 import React from "react"
 
 function Planner() {
@@ -21,21 +29,22 @@ function Planner() {
 
     return (
         <main className="flex min-h-screen flex-col md:flex-row justify-evenly items-center">
-            <div className="flex flex-col">
+            <Card className="flex flex-col bg-stone-950 p-4">
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Label htmlFor="email" className="text-white">Country</Label>
-                    <Input type="email" id="email" placeholder="Email" className="bg-slate-900 border-slate-900 text-white" />
+                    <Input type="email" id="email" placeholder="Canada" className="bg-slate-900 border-slate-900 text-white" />
                 </div>
                 <div className="pt-6 grid w-full max-w-sm items-center gap-1.5">
                     <Label htmlFor="email" className="text-white">City</Label>
-                    <Input type="email" id="email" placeholder="Email" className="bg-slate-900 border-slate-900 text-white" />
+                    <Input type="email" id="email" placeholder="Montreal" className="bg-slate-900 border-slate-900 text-white" />
                 </div>
-                <div className="pb-6 pt-6 grid w-full max-w-sm items-center gap-1.5">
+                <div className="pt-6 grid w-full max-w-sm items-center gap-1.5">
                     <Label htmlFor="email" className="text-white">Additional Info</Label>
                     <Input type="email" id="email" placeholder="Family friendly, halal, etc." className="bg-slate-900 border-slate-900 text-white" />
                 </div>
                 <Popover>
-                    <PopoverTrigger asChild className="bg-slate-900 border-slate-900">
+                    <Label htmlFor="email" className="mt-6 text-white">End Date</Label>
+                    <PopoverTrigger asChild className="mt-2 bg-slate-900 border-slate-900">
                         <Button
                             variant={"outline"}
                             className={cn(
@@ -58,7 +67,8 @@ function Planner() {
                     </PopoverContent>
                 </Popover>
                 <Popover>
-                    <PopoverTrigger asChild className="mt-6 bg-slate-900 border-slate-900">
+                    <Label htmlFor="email" className="mt-6 text-white">End Date</Label>
+                    <PopoverTrigger asChild className="mt-2 bg-slate-900 border-slate-900">
                         <Button
                             variant={"outline"}
                             className={cn(
@@ -80,7 +90,7 @@ function Planner() {
                         />
                     </PopoverContent>
                 </Popover>
-            </div>
+            </Card>
         </main>
     );
 }
