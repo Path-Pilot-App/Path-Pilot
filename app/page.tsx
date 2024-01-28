@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen max-h-screen flex-col items-center justify-between p-24">
-      <div className="text-white z-10 max-w-5xl max-h-screen w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="p-4 text-white fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-slate-900 lg:p-4 lg:dark:bg-zinc-800/30">
+    <main className="flex min-h-screen max-h-screen flex-col items-center justify-between p-16 overflow-hidden">
+      <div className="text-white z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <p className="p-4 text-white fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-3 pt-2 lg:pb-6 lg:pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-slate-900 lg:p-4 lg:dark:bg-zinc-800/30">
           Plan your trips and vacation using the power of&nbsp;AI
         </p>
         <div className="fixed mb-4 bottom-0 left-0 flex h-48 w-full items-end justify-center lg:static lg:h-auto lg:w-auto lg:bg-none">
@@ -23,7 +23,7 @@ export default function Home() {
 
       <h1 className="text-white te text-5xl font-bold text-center leading-snug">Path Planner 🚀</h1>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left">
+      <div className="mb-36 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left">
         <Link
           href="/planner"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-slate-900 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
