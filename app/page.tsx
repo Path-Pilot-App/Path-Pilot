@@ -6,9 +6,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="text-white z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="text-white fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-slate-900 lg:p-4 lg:dark:bg-zinc-800/30">
-          Plan your trips and vacation using the power of&nbsp;
-          <code className="font-mono font-bold">AI</code>
+        <p className="p-4 text-white fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-slate-900 lg:p-4 lg:dark:bg-zinc-800/30">
+          Plan your trips and vacation using the power of&nbsp;AI
         </p>
         <div className="fixed mb-4 bottom-0 left-0 flex h-48 w-full items-end justify-center lg:static lg:h-auto lg:w-auto lg:bg-none">
             <Image
