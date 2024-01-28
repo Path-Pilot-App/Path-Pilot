@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen max-h-screen flex-col items-center justify-between p-16 overflow-hidden">
+    <main className="flex h-screen flex-col items-center justify-between p-16 overflow-hidden">
       <div className="text-white z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="p-4 text-white fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 pb-3 pt-2 lg:pb-6 lg:pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-slate-900 lg:p-4 lg:dark:bg-zinc-800/30">
           Plan your trips and vacation using the power of&nbsp;AI
