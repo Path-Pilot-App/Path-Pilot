@@ -4,7 +4,7 @@ import style from '../../styles/Home.module.css';
 
 import { MapContainer, TileLayer } from 'react-leaflet';
 
-function Map({ lat, lon }) {
+function Map({ lat, lon, locations }) {
     const position = [lat, lon];
 
     return (
@@ -17,6 +17,13 @@ function Map({ lat, lon }) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="http://127.0.0.1:8000/tiles/{z}/{x}/{y}.png"
             />
+            {locations ? locations.map((location) => {
+                <Marker position={location.position}>
+                    <Popup>
+                        {location.name}
+                    </Popup>
+                </Marker>
+            }) : ''}
         </MapContainer>
     );
 }

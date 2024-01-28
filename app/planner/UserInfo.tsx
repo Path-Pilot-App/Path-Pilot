@@ -31,6 +31,7 @@ function UserInfo() {
     const [lat, setLat] = React.useState<number>(45.5031824)
     const [lon, setLon] = React.useState<number>(-73.5698065)
     const [mapKey, setMapKey] = React.useState<number>(0);
+    const [locations, setLocations] = React.useState<any[]>();
 
     useEffect(() => {
         axios.get('https://va7kdap9f9.execute-api.us-east-2.amazonaws.com/dev/api/chat/createthread')
@@ -38,6 +39,14 @@ function UserInfo() {
                 setThreadId(response.data.thread_id);
             })
     }, []);
+
+    const getLocation = (location: string, locations: any[]) => {
+        axios.get(`https://geocode.maps.co/search?q=${location}&api_key=65b666cf384db290066286xqbdf08a8`)
+            .then((response) => {
+                locations.push({"location": location, "lat": response.data[0].lat, "lon": response.data[0].lon})
+                setMapKey((prevKey) => prevKey + 1);
+            })
+    }
 
     const handleSubmit = () => {
         axios.get(`https://geocode.maps.co/search?q=${city}&api_key=65b666cf384db290066286xqbdf08a8`)
@@ -56,6 +65,20 @@ function UserInfo() {
         })
             .then((response) => {
                 setItinerary(response.data.response[0])
+                const jsonMatch = response.data.response[0].match(/JSON:\s*(\[[\s\S]*?\])/);;
+
+                if (jsonMatch) {
+                    const jsonStr = jsonMatch[1]; // Captured group (JSON string) is at index 1
+                    try {
+                        const parsedJson = JSON.parse(jsonStr);
+                        for (let l of parsedJson) {
+                            
+                        }
+                        console.log(parsedJson);
+                    } catch (error) {
+                        console.error("Error parsing JSON:", error);
+                    }
+                }
                 setLoading(false);
             });
     }
@@ -124,12 +147,12 @@ function UserInfo() {
                     </PopoverContent>
                 </Popover>
                 <Button onClick={handleSubmit} className="mt-6 bg-zinc-950 border-white border-2">Generate 🪄</Button>
+                {loading ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : ''}
             </Card>
             <Card className={`bg-slate-900 p-7 m-7 max-w-full lg:max-w-lg ${itinerary === '' ? 'hidden' : ''}`}>
                 <h1 className="text-white">{itinerary}</h1>
             </Card>
-            {loading ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : ''}
-            <Map key={mapKey} lat={lat} lon={lon} />
+            <Map key={mapKey} lat={lat} lon={lon} locations={locations} />
         </>
     );
 }
