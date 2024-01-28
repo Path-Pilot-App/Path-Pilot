@@ -29,22 +29,22 @@ function Planner() {
 
     return (
         <main className="flex min-h-screen flex-col md:flex-row justify-evenly items-center">
-            <Card className="flex flex-col bg-stone-950 p-7">
-                <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Card className="flex flex-col bg-slate-900 p-6">
+                <div className="grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">Country</Label>
-                    <Input type="email" id="email" placeholder="Canada" className="bg-slate-900 border-slate-900 text-white" />
+                    <Input type="email" id="email" placeholder="Canada" className="bg-zinc-950 border-white text-white" />
                 </div>
-                <div className="pt-6 grid w-full max-w-sm items-center gap-1.5">
+                <div className="pt-6 grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">City</Label>
-                    <Input type="email" id="email" placeholder="Montreal" className="bg-slate-900 border-slate-900 text-white" />
+                    <Input type="email" id="email" placeholder="Montreal" className="bg-zinc-950 border-white text-white" />
                 </div>
-                <div className="pt-6 grid w-full max-w-sm items-center gap-1.5">
+                <div className="pt-6 grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">Additional Info</Label>
-                    <Input type="email" id="email" placeholder="Family friendly, halal, etc." className="bg-slate-900 border-slate-900 text-white" />
+                    <Input type="email" id="email" placeholder="Family friendly, halal, etc." className="bg-zinc-950 border-white text-white" />
                 </div>
                 <Popover>
                     <Label htmlFor="email" className="mt-6 text-white">End Date</Label>
-                    <PopoverTrigger asChild className="mt-2 bg-slate-900 border-slate-900">
+                    <PopoverTrigger asChild className="mt-2 bg-zinc-950 border-white">
                         <Button
                             variant={"outline"}
                             className={cn(
@@ -56,7 +56,7 @@ function Planner() {
                             {startDate ? format(startDate, "PPP") : <span className="text-slate-500">Pick a start date</span>}
                         </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0 bg-slate-900 border-slate-900">
+                    <PopoverContent className="w-auto p-0 bg-zinc-950 border-white">
                         <Calendar
                             mode="single"
                             selected={startDate}
@@ -68,7 +68,7 @@ function Planner() {
                 </Popover>
                 <Popover>
                     <Label htmlFor="email" className="mt-6 text-white">End Date</Label>
-                    <PopoverTrigger asChild className="mt-2 bg-slate-900 border-slate-900">
+                    <PopoverTrigger asChild className="mt-2 bg-zinc-950 border-white">
                         <Button
                             variant={"outline"}
                             className={cn(
@@ -90,10 +90,10 @@ function Planner() {
                         />
                     </PopoverContent>
                 </Popover>
-                <Button className="mt-6">Generate 🪄</Button>
+                <Button className="mt-6 bg-zinc-950 border-white">Generate 🪄</Button>
             </Card>
 
-            <Card className="flex flex-col bg-stone-950 p-7 min-w-96 max-h-96 overflow-auto">
+            <Card className="flex flex-col bg-slate-900 p-7 min-w-96">
                 <h1 className="text-white">Your itinerary will be shown here, click generate...</h1>
             </Card>
         </main>
