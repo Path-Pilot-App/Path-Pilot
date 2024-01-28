@@ -26,21 +26,24 @@ import React from "react"
 function Planner() {
     const [startDate, setStartDate] = React.useState<Date>()
     const [endDate, setEndDate] = React.useState<Date>()
+    const [country, setCountry] = React.useState<String>()
+    const [city, setCity] = React.useState<String>()
+    const [additionalInfo, setAdditionalInfo] = React.useState<String>()
 
     return (
         <main className="flex min-h-screen flex-col md:flex-row justify-evenly items-center">
             <Card className="flex flex-col bg-slate-900 p-6">
                 <div className="grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">Country</Label>
-                    <Input type="email" id="email" placeholder="Canada" className="bg-zinc-950 border-white text-white" />
+                    <Input onChange={(event) => setCountry(event.target.value)} type="email" id="email" placeholder="Canada" className="bg-zinc-950 border-white text-white" />
                 </div>
                 <div className="pt-6 grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">City</Label>
-                    <Input type="email" id="email" placeholder="Montreal" className="bg-zinc-950 border-white text-white" />
+                    <Input onChange={(event) => setCity(event.target.value)} type="email" id="email" placeholder="Montreal" className="bg-zinc-950 border-white text-white" />
                 </div>
                 <div className="pt-6 grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">Additional Info</Label>
-                    <Input type="email" id="email" placeholder="Family friendly, halal, etc." className="bg-zinc-950 border-white text-white" />
+                    <Input onChange={(event) => setAdditionalInfo(event.target.value)} type="email" id="email" placeholder="Family friendly, halal, etc." className="bg-zinc-950 border-white text-white" />
                 </div>
                 <Popover>
                     <Label htmlFor="email" className="mt-6 text-white">End Date</Label>
@@ -93,7 +96,7 @@ function Planner() {
                 <Button className="mt-6 bg-zinc-950 border-white">Generate 🪄</Button>
             </Card>
 
-            <Card className="flex flex-col bg-slate-900 p-7 min-w-96">
+            <Card className="flex flex-col bg-slate-900 p-7 min-w-96 max-w-96">
                 <h1 className="text-white">Your itinerary will be shown here, click generate...</h1>
             </Card>
         </main>
