@@ -5,7 +5,7 @@ import UserInfo from "./UserInfo";
 async function Planner() {
 
     return (
-        <main className="flex min-h-screen flex-col justify-evenly items-center">
+        <main className="flex min-h-screen flex-col lg:flex-row justify-evenly items-center">
             <UserInfo />
         </main>
     );

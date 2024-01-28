@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/popover"
 import { Card } from "@/components/ui/card"
 import axios from "axios"
+import Map from '@/components/Map'
 
 
 function UserInfo() {
@@ -27,6 +28,9 @@ function UserInfo() {
     const [loading, setLoading] = React.useState<Boolean>()
     const [threadId, setThreadId] = React.useState<String>()
     const [itinerary, setItinerary] = React.useState<String>('')
+    const [lat, setLat] = React.useState<number>(45.5031824)
+    const [lon, setLon] = React.useState<number>(-73.5698065)
+    const [mapKey, setMapKey] = React.useState<number>(0);
 
     useEffect(() => {
         axios.get('https://va7kdap9f9.execute-api.us-east-2.amazonaws.com/dev/api/chat/createthread')
@@ -36,6 +40,13 @@ function UserInfo() {
     }, []);
 
     const handleSubmit = () => {
+        axios.get(`https://geocode.maps.co/search?q=${city}&api_key=65b666cf384db290066286xqbdf08a8`)
+            .then((response) => {
+                setLat(response.data[0].lat)
+                setLon(response.data[0].lon)
+                setMapKey((prevKey) => prevKey + 1);
+            })
+
         setLoading(true);
         const axiosPromise = axios.get('https://va7kdap9f9.execute-api.us-east-2.amazonaws.com/dev/api/chat/sendrequest', {
             params: {
@@ -51,7 +62,7 @@ function UserInfo() {
 
     return (
         <>
-            <Card className={`flex flex-col bg-slate-900 p-6 ${itinerary === '' ? '' : 'hidden'}`}>
+            <Card className={`flex flex-col max-w-full lg:max-w-lg bg-slate-900 p-6 m-7 ${itinerary === '' ? '' : 'hidden'}`}>
                 <div className="grid w-full max-w-sm items-center gap-2.5">
                     <Label htmlFor="email" className="text-white">Country</Label>
                     <Input onChange={(event) => setCountry(event.target.value)} type="text" name="country" placeholder="Canada" className="bg-zinc-950 border-white text-white" />
@@ -114,10 +125,11 @@ function UserInfo() {
                 </Popover>
                 <Button onClick={handleSubmit} className="mt-6 bg-zinc-950 border-white border-2">Generate 🪄</Button>
             </Card>
-            <Card className={`flex flex-col bg-slate-900 p-7 min-w-96 ${itinerary === '' ? 'hidden' : ''}`}>
+            <Card className={`bg-slate-900 p-7 m-7 max-w-full lg:max-w-lg ${itinerary === '' ? 'hidden' : ''}`}>
                 <h1 className="text-white">{itinerary}</h1>
             </Card>
-            {loading ? ( <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> ) : ''}
+            {loading ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : ''}
+            <Map key={mapKey} lat={lat} lon={lon} />
         </>
     );
 }
