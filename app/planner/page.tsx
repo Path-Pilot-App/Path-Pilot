@@ -29,7 +29,7 @@ function Planner() {
 
     return (
         <main className="flex min-h-screen flex-col md:flex-row justify-evenly items-center">
-            <Card className="flex flex-col bg-stone-950 p-4">
+            <Card className="flex flex-col bg-stone-950 p-7">
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Label htmlFor="email" className="text-white">Country</Label>
                     <Input type="email" id="email" placeholder="Canada" className="bg-slate-900 border-slate-900 text-white" />
@@ -90,6 +90,11 @@ function Planner() {
                         />
                     </PopoverContent>
                 </Popover>
+                <Button className="mt-6">Generate 🪄</Button>
+            </Card>
+
+            <Card className="flex flex-col bg-stone-950 p-7 min-w-96 max-h-96 overflow-auto">
+                <h1 className="text-white">Your itinerary will be shown here, click generate...</h1>
             </Card>
         </main>
     );
